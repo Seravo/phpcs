@@ -10,6 +10,6 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "docker://ghcr.io/seravo/phpcs:latest"
   args:
     - ${{ inputs.args }}
