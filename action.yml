@@ -1,0 +1,15 @@
+---
+name: "Run PHPCS linter"
+description: "Lint code using PHPCS"
+
+inputs:
+  rules:
+    description: "PHPCS args"
+    required: true
+    default: ''
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.args }}

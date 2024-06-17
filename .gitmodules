@@ -1,0 +1,18 @@
+[submodule "phpcs/phpcs-core"]
+	path = thirdparty/phpcs-core
+	url = https://github.com/PHPCSStandards/PHP_CodeSniffer/
+[submodule "phpcs/phpcompatibility"]
+	path = thirdparty/phpcompatibility
+	url = https://github.com/PHPCompatibility/PHPCompatibility
+[submodule "phpcs/phpcsutils"]
+	path = thirdparty/phpcsutils
+	url = https://github.com/PHPCSStandards/PHPCSUtils
+[submodule "phpcs/phpcsextra"]
+	path = thirdparty/phpcsextra
+	url = https://github.com/PHPCSStandards/PHPCSExtra
+[submodule "thirdparty/security"]
+	path = thirdparty/security
+	url = https://github.com/FloeDesignTechnologies/phpcs-security-audit
+[submodule "thirdparty/wordpress"]
+	path = thirdparty/wordpress
+	url = https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
