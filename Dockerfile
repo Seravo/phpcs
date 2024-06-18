@@ -17,6 +17,9 @@ COPY thirdparty/security /usr/share/php/PHP/CodeSniffer/src/Standards/
 COPY thirdparty/phpcompatibility /usr/share/php/PHP/CodeSniffer/src/Standards/
 COPY thirdparty/phpcsutils /usr/share/php/PHP/CodeSniffer/src/Standards/
 COPY thirdparty/phpcsextra /usr/share/php/PHP/CodeSniffer/src/Standards/
+COPY thirdparty/annotate-pull-request-from-checkstyle/cs2pr /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/cs2pr
 
 USER user
 
