@@ -25,4 +25,5 @@ RUN ln -s /usr/share/php/PHP/CodeSniffer/bin/phpcs /usr/local/bin/phpcs && \
 
 USER user
 
-ENTRYPOINT ["/usr/bin/php", "/usr/local/bin/phpcs"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
