@@ -19,8 +19,10 @@ COPY thirdparty/phpcsutils /usr/share/php/PHP/CodeSniffer/src/Standards/
 COPY thirdparty/phpcsextra /usr/share/php/PHP/CodeSniffer/src/Standards/
 COPY thirdparty/annotate-pull-request-from-checkstyle/cs2pr /usr/local/bin/
 
-RUN chmod +x /usr/local/bin/cs2pr
+RUN ln -s /usr/share/php/PHP/CodeSniffer/bin/phpcs /usr/local/bin/phpcs && \
+    ln -s /usr/share/php/PHP/CodeSniffer/bin/phpcbf /usr/local/bin/phpcbf && \
+    chmod +x /usr/local/bin/cs2pr
 
 USER user
 
-ENTRYPOINT ["/usr/bin/php", "/usr/share/php/PHP/CodeSniffer/bin/phpcs"]
+ENTRYPOINT ["/usr/bin/php", "/usr/local/bin/phpcs"]
