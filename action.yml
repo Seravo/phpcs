@@ -6,7 +6,7 @@ inputs:
   rules:
     description: "PHPCS args"
     required: true
-    default: ''
+    default: '.'
 
 runs:
   using: "docker"
