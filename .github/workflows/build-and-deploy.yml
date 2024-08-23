@@ -9,9 +9,6 @@ on:
       - main
       - feature/**
       - bugfix/**
-  pull_request:
-    branches:
-      - '*'
 
 permissions:
   contents: read
