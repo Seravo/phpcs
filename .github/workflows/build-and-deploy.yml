@@ -3,7 +3,7 @@ name: Build and deploy images
 on:
   schedule:
     # rebuild every 16th day of the month at 15:24 UTC
-    - cron: '24 15 16 * *'
+    - cron: "24 15 16 * *"
   push:
     branches:
       - main
@@ -27,13 +27,13 @@ jobs:
         run: echo "refname=$(echo "${{ github.ref_name }}" |sed 's/\//-/g')" >> $GITHUB_OUTPUT
 
       - id: clone-repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         name: Clone git repository
         with:
           submodules: true
 
       - id: docker-login
-        uses: Seravo/actions/docker-login@v1.4.0
+        uses: Seravo/actions/docker-login@v1.17.1
         name: Login to ghcr.io
 
       # To speed up builds, try to use previously built image as cache source.
@@ -42,12 +42,12 @@ jobs:
       - if: ${{ github.event_name != 'schedule' }}
         name: Pull previously built image
         id: docker-pull
-        uses: Seravo/actions/docker-pull-previous@v1.4.0
+        uses: Seravo/actions/docker-pull-previous@v1.17.1
         with:
           image: "${{ env.image }}"
 
       - id: docker-build
-        uses: Seravo/actions/docker-build@v1.4.0
+        uses: Seravo/actions/docker-build@v1.17.1
         name: Build image
         with:
           image: "${{ env.image }}"
@@ -55,20 +55,20 @@ jobs:
       - if: ${{ github.ref == 'refs/heads/main' }}
         name: Push new image to production
         id: docker-push-master
-        uses: Seravo/actions/docker-push@v1.4.0
+        uses: Seravo/actions/docker-push@v1.17.1
         with:
           image: "${{ env.image }}"
 
       - id: docker-tag-push-commit
         name: Tag image with commit id
-        uses: Seravo/actions/docker-tag-and-push@v1.4.0
+        uses: Seravo/actions/docker-tag-and-push@v1.17.1
         with:
           source: "${{ env.image }}"
           target: "${{ env.image }}:${{ github.sha }}"
 
       - id: docker-tag-push-refname
         name: Tag image with refname
-        uses: Seravo/actions/docker-tag-and-push@v1.4.0
+        uses: Seravo/actions/docker-tag-and-push@v1.17.1
         with:
           source: "${{ env.image }}"
           target: "${{ env.image }}:${{ steps.refname.outputs.refname }}"
