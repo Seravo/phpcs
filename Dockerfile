@@ -1,4 +1,4 @@
-FROM ghcr.io/seravo/ubuntu:noble
+FROM ghcr.io/seravo/ubuntu:resolute
 
 RUN apt-setup && \
     apt-get --assume-yes install \
