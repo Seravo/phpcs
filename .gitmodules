@@ -19,3 +19,9 @@
 [submodule "thirdparty/annotate-pull-request-from-checkstyle"]
 	path = thirdparty/annotate-pull-request-from-checkstyle
 	url = https://github.com/staabm/annotate-pull-request-from-checkstyle
+[submodule "thirdparty/slevomat-coding-standard"]
+	path = thirdparty/slevomat-coding-standard
+	url = https://github.com/slevomat/coding-standard
+[submodule "thirdparty/phpdoc-parser"]
+	path = thirdparty/phpdoc-parser
+	url = https://github.com/phpstan/phpdoc-parser
