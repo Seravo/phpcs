@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+BIN="$(basename "$0")"
+FULL="/usr/share/php/PHP/CodeSniffer/bin/${BIN}"
+
+if [ ! -x "${FULL}" ]
+then
+    echo >&2 "ERROR: Missing '${FULL}'."
+    exit 1
+fi
+
+PHPCS_FLAGS="--bootstrap=/opt/seravo/patches/autoload-phpdoc.php"
+PIPE_COMMAND="cat"
+
+# If we're running in GitHub Actions, do some formatting
+if [ -n "${GITHUB_ACTIONS}" ]
+then
+    PHPCS_FLAGS="${PHPCS_FLAGS} -q --report=checkstyle"
+    PIPE_COMMAND="cs2pr"
+fi
+
+exec /usr/bin/php \
+    "${FULL}" \
+        ${PHPCS_FLAGS} \
+        "$@" |"${PIPE_COMMAND}"
