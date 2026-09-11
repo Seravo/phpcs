@@ -1,4 +1,6 @@
 FROM ghcr.io/seravo/ubuntu:resolute
+ARG APT_PROXY
+ARG UBUNTU_MIRROR
 
 RUN apt-setup && \
     apt-get --assume-yes install \
